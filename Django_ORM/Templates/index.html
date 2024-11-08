@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{Title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Title</title>
+</head>
+<body>
+    <pagename >
+        {% block pagename  %}
+            <h1 align="left">Главная страница</h1>
+        {% endblock %}
+    </pagename >
+
+    <br>
+    <br>
+    <menu>
+        {% block menu %}
+            {% include 'menu_2.html'%}
+        {% endblock %}
+    </menu>
+
+    <content >
+        {% block content %}
+            <p></p>
+        {% endblock %}
+    </content>
+
+    <cellar>
+        {% block cellar %}
+        <p></p>
+        {% endblock %}
+    </cellar>
+</body>
+</html>

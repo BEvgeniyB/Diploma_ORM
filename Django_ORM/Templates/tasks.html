@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block pagename  %}
+     <h1>ЗАДАНИЯ</h1>
+{% endblock %}
+
+{% block menu %}
+    {{ block.super}}
+{% endblock %}
+
+{% block content %}
+    <br>
+    <form>
+        <ul >
+            {% for t in list %}
+            <li >  {{t.title}} | {{t.content}}  </li>
+            <br>
+            {% endfor %}
+        </ul>
+    <br>
+    <br>
+    </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+
+{% block pagename  %}
+     <h1>Пользователи</h1>
+{% endblock %}
+
+{% block menu %}
+    {{ block.super}}
+{% endblock %}
+
+{% block content %}
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <ul >
+            {% for t in list %}
+            <li >  {{t.username}} | {{t.firstname}} | {{t.lastname}} |  {{t.age}}
+
+                <button formaction="/tasks/" class="b1" name="idd" id="idd" type="submit" value="{{t.id}}"> Посмотреть задания  </button></li>
+            <br>
+            {% endfor %}
+        </ul>
+    <br>
+    <br>
+    </form>
+{% endblock %}
