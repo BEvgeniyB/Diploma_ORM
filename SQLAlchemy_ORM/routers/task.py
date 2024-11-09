@@ -41,6 +41,7 @@ async def create_task(db: Annotated[Session, Depends(get_db)], create_task: Crea
     return {"status_code": status.HTTP_201_CREATED,
             "transaction": "Successful"}
 
+
 @router.put("/update")
 async def update_tas(db: Annotated[Session, Depends(get_db)], task_id: int, up_task: UpdateTask):
     tasks = db.scalar(select(Task).where(Task.id == task_id))

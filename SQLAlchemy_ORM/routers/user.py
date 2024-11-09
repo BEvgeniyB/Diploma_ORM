@@ -5,6 +5,7 @@ from backend.db_depends import get_db
 from typing import Annotated
 from models import User,Task
 from schemas import CreateUser, UpdateUser
+import crud
 from sqlalchemy import insert, select, update, delete
 from slugify import slugify
 
@@ -40,14 +41,17 @@ async def tasks_by_user_id(db: Annotated[Session, Depends(get_db)], user_id: int
     return tasks
 
 @router.post("/create")
-async def create_user(db: Annotated[Session, Depends(get_db)], create_user: CreateUser):
-    db.execute(insert(User).values(username=create_user.username, firstname=create_user.firstname,
-                                   lastname=create_user.lastname, age=create_user.age,
-                                   slug=slugify(create_user.username)))
+async def create_user(db: Annotated[Session, Depends(get_db)], creates_user: CreateUser):
+    db.execute(insert(User).values(username=creates_user.username, firstname=creates_user.firstname,
+                                   lastname=creates_user.lastname, age=creates_user.age,
+                                   slug=slugify(creates_user.username)))
     db.commit()
     return {"status_code": status.HTTP_201_CREATED,
             "transaction": "Successful"}
 
+@router.post('/create2')
+async def create_user2(db: Annotated[Session, Depends(get_db)],creates_user: CreateUser):
+    return {"status_code": status.HTTP_201_CREATED,"transaction":crud.create_db(db, creates_user)}
 
 @router.put("/update")
 async def update_user(db: Annotated[Session, Depends(get_db)], user_id: int, up_user: UpdateUser):
