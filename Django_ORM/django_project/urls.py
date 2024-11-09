@@ -23,4 +23,5 @@ urlpatterns = [
     path('main/',main),
     path('users/',user_list),
     path('tasks/',task_list),
+    path('reg/', registration_user),
 ]

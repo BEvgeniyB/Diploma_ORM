@@ -12,10 +12,14 @@
     <br>
     <form>
         <ul >
+            {% if not there_is %}
+            <h3 > нет заданий </h3>
+            {% endif %}
             {% for t in list %}
             <li >  {{t.title}} | {{t.content}}  </li>
             <br>
             {% endfor %}
+
         </ul>
     <br>
     <br>
