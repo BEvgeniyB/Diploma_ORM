@@ -12,7 +12,7 @@ class User(models.Model):
     age = models.IntegerField()
     slug = models.CharField(max_length=15,db_index=True)
     def __str__(self):
-        return self.username
+        return f'{self.username} {self.firstname} {self.lastname}'
 
 class Task(models.Model):
 

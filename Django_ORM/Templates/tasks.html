@@ -19,7 +19,7 @@
             <h4> Выполнено заданий  {{completed_tasks}} | Осталось {{0}}</h4>
             {% endif %}
             {% for t in list %}
-            <li >  {{t.title}} | {{t.content}} | {{t.completed}} </li>
+            <li > {{t.user}} | {{t.title}} | {{t.content}} | {{t.completed}} </li>
             <br>
             {% endfor %}
 
