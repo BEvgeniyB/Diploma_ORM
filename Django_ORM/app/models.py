@@ -11,7 +11,8 @@ class User(models.Model):
     lastname = models.CharField(max_length=15)
     age = models.IntegerField()
     slug = models.CharField(max_length=15,db_index=True)
-
+    def __str__(self):
+        return self.username
 
 class Task(models.Model):
 

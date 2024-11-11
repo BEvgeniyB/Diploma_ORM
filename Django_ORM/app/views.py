@@ -18,11 +18,25 @@ def user_list(request):
     return render(request,"users.html",context=context)
 
 def task_list(request):
-    user_id = request.POST['idd']
-    tasks = Task.objects.filter(user_id=user_id)
-    there_is = Task.objects.filter(user_id=user_id).exists()
-    title = 'Задания'
-    context = {'title':title,'list':tasks,'there_is':there_is}
+    if request.method == "POST":
+        user_id = request.POST['idd']
+        user_str = f'У пользователя :{User.objects.get(id=user_id)}'
+        tasks = Task.objects.filter(user_id=user_id)
+        there_is = Task.objects.filter(user_id=user_id).exists()
+        completed_tasks = Task.objects.filter(user_id=user_id , completed=True).count()
+        not_completed_tasks = Task.objects.filter(user_id=user_id, completed=False).count()
+        title = 'Задания'
+        #context = {'title':title,'list':tasks,'there_is':there_is,completed_tasks:completed_tasks,not_completed_tasks:not_completed_tasks}
+    else:
+        tasks = Task.objects.all()
+        there_is = Task.objects.all().exists()
+        user_str = 'По всем пользователям'
+        completed_tasks = Task.objects.filter(completed=True).count()
+        not_completed_tasks = Task.objects.filter(completed=False).count()
+        title = 'Все задания'
+        #context = {'title': title, 'list': tasks,'there_is':there_is}
+    context = {'title': title, 'list': tasks, 'there_is': there_is, 'completed_tasks': completed_tasks,
+               'not_completed_tasks': not_completed_tasks,'user_str':user_str}
     return render(request,"tasks.html",context=context)
 
 def registration_user(request: WSGIRequest):

@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 
 {% block pagename  %}
-     <h1>ЗАДАНИЯ</h1>
+     <h1>{{title}}</h1>
 {% endblock %}
 
 {% block menu %}
@@ -14,9 +14,12 @@
         <ul >
             {% if not there_is %}
             <h3 > нет заданий </h3>
+            {% else %}
+            <h4>  {{user_str}}</h4>
+            <h4> Выполнено заданий  {{completed_tasks}} | Осталось {{0}}</h4>
             {% endif %}
             {% for t in list %}
-            <li >  {{t.title}} | {{t.content}}  </li>
+            <li >  {{t.title}} | {{t.content}} | {{t.completed}} </li>
             <br>
             {% endfor %}
 
