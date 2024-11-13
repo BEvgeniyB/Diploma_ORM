@@ -6,3 +6,4 @@ async def init_db():
         db_url='sqlite://taskmanager.db',
         modules={'models': ['models']}
     )
+

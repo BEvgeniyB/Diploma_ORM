@@ -24,3 +24,14 @@ class Task(models.Model):
     completed = models.BooleanField( default=False)
     user = models.ForeignKey(User,related_name='tasks', on_delete=models.PROTECT,null=True)
     slug = models.CharField(max_length=15,db_index=True)
+
+class Cinema(models.Model):
+    name = models.CharField(max_length=200)
+    movie_duration = models.CharField(max_length=50)
+    movie_year = models.IntegerField(default=1900)
+    genres = models.CharField(max_length=50, default=" ")
+    countries = models.CharField(max_length=40, default=" ")
+
+
+    def __str__(self):
+        return self.name

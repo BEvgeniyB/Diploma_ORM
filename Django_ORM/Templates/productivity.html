@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<h1 style="text-align:center;">  {{ head }} </h1>
+<style>
+        /* Стили для контейнера */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Стили для кнопок */
+        button {
+            margin: 10px;
+        }
+</style>
+
+<body>
+
+<table border="1" style="border:1px solid black;margin-left:auto;margin-right:auto;">
+    <tr>
+        <td> Показатель  </td>
+        <td>Django ORM</td>
+        <td>SQLAlchemy</td>
+        <td>Tortoise ORM</td>
+
+    </tr>
+    {% for key, values in data.items %}
+    <tr>
+        <td>{{key}}</td>
+        {% for v in values.0 %}
+             <td>{{v}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+
+<h1 style="text-align:center;">  {{ post_count }} {{ zz }} </h1>
+</body>
+</html>
